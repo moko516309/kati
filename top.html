@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charest="UTF-8">
+    <title>じゃんけんできる</title>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+</head>
+<body>
+    <py-script>
+        from random import randint
+        import time
+        
+        hands = ["グー","チョキ","パー"]
+        rules = ["あいこ","負け( ᵕ̩̩ㅅᵕ̩̩ )","勝ち"]
+        win = 0
+        lose = 0
+        draw = 0
+        
+        print("じゃんけんしますよ")
+        
+        while True:
+            #Player
+            print("0:グー 1:チョキ 2:パー")
+            p = int(input("出しても、いいですよ、、"))
+            print("貴方は, "+hands[p]+"")
+            time.sleep(0.9)
+        
+            #PC
+            m = randint(0,2)
+            print("私は、 "+hands[m]+"を出しました！")
+            time.sleep(0.9)
+        
+            i = (p - m) % 3
+            print(rules[i])
+            if i == 0:
+                draw = draw +1
+            elif i == 1:
+                lose = lose + 1
+            else:
+                win = win + 1
+            time.sleep(0.9)
+        
+            #結果
+            print("{}勝/{}負/{}引き分け".format(win , lose, draw))
+            if win == 3:
+                print("結果")
+                time.sleep(3)
+                print("貴方の勝ちです")
+                break
+            if lose == 3:
+                print("結果")
+                time.sleep(3)
+                print("貴方の負けです( ᵕ̩̩ㅅᵕ̩̩ )")
+                break
+    </py-script>
+</body>
